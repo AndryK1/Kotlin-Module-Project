@@ -70,7 +70,11 @@ class Archives {
             return false
         }
         println("Введите текст для добавления (всё, что вводите, будет добавлено в конец заметки):")
-        val noteText = scanner.nextLine()
+        val noteText = scanner.nextLine().trim()
+        if (noteText.isEmpty()) {
+            println("Содержание заметки не может быть пустым или состоять из одних пробелов, попробуйте ещё раз.")
+            return false
+        }
         val newNote = notesInfo(name = noteName, text = noteText)
 
         selectedArchive!!.notes.add(newNote)
